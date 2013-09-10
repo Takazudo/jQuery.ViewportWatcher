@@ -7,10 +7,218 @@
 <link rel="stylesheet" href="styles.css">
 <script src="../../libs/jquery/1.10.2/jquery.js"></script>
 <script src="../../viewportSize/viewportSize.js"></script>
+<script src="../../EveEve/eveeve.js"></script>
 <script src="../../jquery.viewportwatcher.js"></script>
 <script>
+$(function() {
+
+  var console = window.console || {};
+  console.log = console.log || $.noop;
+
+  // things for test
+
+  var showMsg = function(msg, bg, $el) {
+    $el
+      .stop()
+      .empty()
+      .hide()
+      .text(msg)
+      .css({
+        opacity: 0,
+        display: 'block',
+        backgroundColor: bg
+      })
+      .animate({
+        opacity: 1
+      });
+  };
+
+  // basic
+
+  (function() {
+
+    var $msg = $('#msg1');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.when(function(width) {
+        if(width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#85A71E', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 800px!', '#BFD841', $msg);
+      });
+    });
+
+  })();
+
+  // notify_on_init: false
+
+  (function() {
+
+    var $msg = $('#msg2');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.option({
+        notify_on_init: false
+      });
+      o.when(function(width) {
+        if(width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#85A71E', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 800px!', '#BFD841', $msg);
+      });
+    });
+
+  })();
+
+  // more complicated
+
+  (function() {
+
+    var $msg = $('#msg3');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.when(function(width) {
+        if(width < 400) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 400px!', '#B33C36', $msg);
+      });
+      o.when(function(width) {
+        if(400 <= width && width < 600) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 600px!', '#FF8A31', $msg);
+      });
+      o.when(function(width) {
+        if(600 <= width && width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#168471', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width && width < 1000) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 1000px!', '#755363', $msg);
+      });
+      o.when(function(width) {
+        if(1000 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 1000px!', '#5C9E99', $msg);
+      });
+    });
+
+  })();
+
+  // events
+
+  (function() {
+
+    var $msg = $('#msg4');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.when(function(width) {
+        if(width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#85A71E', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 800px!', '#BFD841', $msg);
+      });
+    });
+    watcher.on('observationswitch', function(data) {
+      console.log('observationswitch fired', data);
+    });
+    watcher.on('resize', function() {
+      console.log('resize fired');
+    });
+
+  })();
+
+  // throttle_millisec: 1000
+
+  (function() {
+
+    var $msg = $('#msg5');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.option({
+        throttle_millisec: 1000
+      });
+      o.when(function(width) {
+        if(width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#85A71E', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 800px!', '#BFD841', $msg);
+      });
+    });
+
+  })();
+
+  // destroy
+
+  (function() {
+
+    var $msg = $('#msg6');
+    var watcher = new $.ViewportWatcher(function(o) {
+      o.when(function(width) {
+        if(width < 800) { return true; }
+        return false;
+      }, function() {
+        showMsg('Less than 800px!', '#85A71E', $msg);
+      });
+      o.when(function(width) {
+        if(800 <= width) { return true; }
+        return false;
+      }, function() {
+        showMsg('More than 800px!', '#BFD841', $msg);
+      });
+    });
+
+    $('#destroyTest').click(function() {
+      watcher.destroy();
+    });
+
+  })();
+
+
+});
 </script>
 </head>
 <body>
+
+  <h1>jQuery.viewportWatcher</h1>
+
+  <h2>basic</h2>
+  <div id="msg1" class="msg">messages will be displayed here</div>
+  <h2>notify_on_init: false</h2>
+  <div id="msg2" class="msg">messages will be displayed here</div>
+  <h2>more complicated</h2>
+  <div id="msg3" class="msg">messages will be displayed here</div>
+  <h2>events (see console)</h2>
+  <div id="msg4" class="msg">messages will be displayed here</div>
+  <h2>throttle_millisec: 1000</h2>
+  <div id="msg5" class="msg">messages will be displayed here</div>
+  <h2>destroy <button id="destroyTest">destroy</button></h2>
+  <div id="msg6" class="msg">messages will be displayed here</div>
+
 </body>
 </html>

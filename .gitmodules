@@ -1,3 +1,6 @@
 [submodule "viewportSize"]
 	path = viewportSize
 	url = https://github.com/tysonmatanich/viewportSize.git
+[submodule "EveEve"]
+	path = EveEve
+	url = https://github.com/Takazudo/EveEve.git

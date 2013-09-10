@@ -68,8 +68,7 @@ module.exports = (grunt) ->
       test:
         files: [ '<%= coffee.test.src %>' ]
         tasks: [
-          'coffee:test'
-          'mocha'
+          'default'
         ]
 
   grunt.registerTask 'default', [
