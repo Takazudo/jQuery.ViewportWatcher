@@ -64,16 +64,16 @@
     })(EveEve);
     ns.winWatcher = new ns.WinWatcher;
     ns.Observation = (function() {
-      function Observation(criteria, handler) {
+      function Observation(criteria, handlers) {
         this.criteria = criteria;
-        this.handler = handler;
+        this.handlers = handlers;
         this._handlerFired = false;
         this.active = false;
       }
 
       Observation.prototype.handleNotification = function(info) {
         if ((this._shouldIHandle(info)) && (!this._handlerFired)) {
-          this.handler();
+          this.handlers.match();
           this.active = true;
           this._handlerFired = true;
           return true;
@@ -120,9 +120,9 @@
         return this.options = $.extend({}, ns.Watcher.defaults, options);
       };
 
-      Watcher.prototype.when = function(criteria, handler) {
+      Watcher.prototype.when = function(criteria, handlers) {
         var o;
-        o = new ns.Observation(criteria, handler);
+        o = new ns.Observation(criteria, handlers);
         this._observations.push(o);
         return this;
       };

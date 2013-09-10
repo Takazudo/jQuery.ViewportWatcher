@@ -47,16 +47,24 @@
         o = new ns.Watcher(function(observer) {
           observer.when((function(w) {
             return w < 300;
-          }), spy);
+          }), {
+            match: spy
+          });
           observer.when((function(w) {
             return (300 <= w && w < 600);
-          }), spy);
+          }), {
+            match: spy
+          });
           observer.when((function(w) {
             return (600 <= w && w < 900);
-          }), spy);
+          }), {
+            match: spy
+          });
           return observer.when((function(w) {
             return 900 <= w;
-          }), spy);
+          }), {
+            match: spy
+          });
         });
         return (expect(spy.calledOnce)).to.be(true);
       });
@@ -79,16 +87,24 @@
           });
           observer.when((function(w) {
             return w < 300;
-          }), spy1);
+          }), {
+            match: spy1
+          });
           observer.when((function(w) {
             return (300 <= w && w < 600);
-          }), spy2);
+          }), {
+            match: spy2
+          });
           observer.when((function(w) {
             return (600 <= w && w < 900);
-          }), spy3);
+          }), {
+            match: spy3
+          });
           return observer.when((function(w) {
             return 900 <= w;
-          }), spy4);
+          }), {
+            match: spy4
+          });
         });
       });
       it("should fire correct handler when it received `notify`", function() {

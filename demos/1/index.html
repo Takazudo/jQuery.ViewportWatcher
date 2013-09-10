@@ -42,14 +42,18 @@ $(function() {
       o.when(function(width) {
         if(width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#85A71E', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#85A71E', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 800px!', '#BFD841', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 800px!', '#BFD841', $msg);
+        }
       });
     });
 
@@ -67,14 +71,18 @@ $(function() {
       o.when(function(width) {
         if(width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#85A71E', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#85A71E', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 800px!', '#BFD841', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 800px!', '#BFD841', $msg);
+        }
       });
     });
 
@@ -89,32 +97,42 @@ $(function() {
       o.when(function(width) {
         if(width < 400) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 400px!', '#B33C36', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 400px!', '#B33C36', $msg);
+        }
       });
       o.when(function(width) {
         if(400 <= width && width < 600) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 600px!', '#FF8A31', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 600px!', '#FF8A31', $msg);
+        }
       });
       o.when(function(width) {
         if(600 <= width && width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#168471', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#168471', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width && width < 1000) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 1000px!', '#755363', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 1000px!', '#755363', $msg);
+        }
       });
       o.when(function(width) {
         if(1000 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 1000px!', '#5C9E99', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 1000px!', '#5C9E99', $msg);
+        }
       });
     });
 
@@ -129,14 +147,18 @@ $(function() {
       o.when(function(width) {
         if(width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#85A71E', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#85A71E', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 800px!', '#BFD841', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 800px!', '#BFD841', $msg);
+        }
       });
     });
     watcher.on('observationswitch', function(data) {
@@ -160,14 +182,18 @@ $(function() {
       o.when(function(width) {
         if(width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#85A71E', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#85A71E', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 800px!', '#BFD841', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 800px!', '#BFD841', $msg);
+        }
       });
     });
 
@@ -182,14 +208,18 @@ $(function() {
       o.when(function(width) {
         if(width < 800) { return true; }
         return false;
-      }, function() {
-        showMsg('Less than 800px!', '#85A71E', $msg);
+      }, {
+        match: function() {
+          showMsg('Less than 800px!', '#85A71E', $msg);
+        }
       });
       o.when(function(width) {
         if(800 <= width) { return true; }
         return false;
-      }, function() {
-        showMsg('More than 800px!', '#BFD841', $msg);
+      }, {
+        match: function() {
+          showMsg('More than 800px!', '#BFD841', $msg);
+        }
       });
     });
 

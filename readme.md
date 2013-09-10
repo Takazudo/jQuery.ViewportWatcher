@@ -14,15 +14,19 @@ var watcher = new $.ViewportWatcher(function(o) {
   o.when(function(width) {
     if(width < 800) { return true; }
     return false;
-  }, function() {
-    doSomething();
+  }, {
+    match: function() {
+      // do something
+    }
   });
 
   o.when(function(width) {
     if(800 <= width) { return true; }
     return false;
-  }, function() {
-    doSomething();
+  }, {
+    match: function() {
+      // do something
+    }
   });
 
 });

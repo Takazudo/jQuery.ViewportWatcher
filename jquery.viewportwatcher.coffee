@@ -58,13 +58,13 @@ do ($ = jQuery) ->
 
   class ns.Observation
     
-    constructor: (@criteria, @handler) ->
+    constructor: (@criteria, @handlers) ->
       @_handlerFired = false
       @active = false
 
     handleNotification: (info) ->
       if (@_shouldIHandle info) and (not @_handlerFired)
-        @handler()
+        @handlers.match()
         @active = true
         @_handlerFired = true
         return true
@@ -98,8 +98,8 @@ do ($ = jQuery) ->
     option: (options = {}) ->
       @options = $.extend {}, ns.Watcher.defaults, options
 
-    when: (criteria, handler) ->
-      o = new ns.Observation criteria, handler
+    when: (criteria, handlers) ->
+      o = new ns.Observation criteria, handlers
       @_observations.push o
       return this
     

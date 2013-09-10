@@ -39,10 +39,10 @@ describe "ns.Watcher", ->
     
       spy = sinon.spy()
       o = new ns.Watcher (observer) ->
-        observer.when ((w) -> (w < 300)), spy
-        observer.when ((w) -> (300 <= w < 600)), spy
-        observer.when ((w) -> (600 <= w < 900)), spy
-        observer.when ((w) -> (900 <= w)), spy
+        observer.when ((w) -> (w < 300)), match: spy
+        observer.when ((w) -> (300 <= w < 600)), match: spy
+        observer.when ((w) -> (600 <= w < 900)), match: spy
+        observer.when ((w) -> (900 <= w)), match: spy
       (expect spy.calledOnce).to.be true
 
   describe "notification test", ->
@@ -60,10 +60,10 @@ describe "ns.Watcher", ->
       spy4 = sinon.spy()
       o = new ns.Watcher (observer) ->
         observer.option notify_on_init: false
-        observer.when ((w) -> (w < 300)), spy1
-        observer.when ((w) -> (300 <= w < 600)), spy2
-        observer.when ((w) -> (600 <= w < 900)), spy3
-        observer.when ((w) -> (900 <= w)), spy4
+        observer.when ((w) -> (w < 300)), match: spy1
+        observer.when ((w) -> (300 <= w < 600)), match: spy2
+        observer.when ((w) -> (600 <= w < 900)), match: spy3
+        observer.when ((w) -> (900 <= w)), match: spy4
 
     it "should fire correct handler when it received `notify`", ->
       o.notify width: 400
