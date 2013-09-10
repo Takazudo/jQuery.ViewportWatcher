@@ -1,10 +1,10 @@
-# jQuery.viewportWatcher
+# jQuery.ViewportWatcher
 
 handle window's width change for responsive web design.
 
 ## Demos
 
-* [basic](http://takazudo.github.io/jQuery.viewportWatcher/demos/1/)
+* [basic](http://takazudo.github.io/jQuery.ViewportWatcher/demos/1/)
 
 ## Usage
 
