@@ -92,7 +92,7 @@ do ($ = jQuery) ->
       unless @options
         @option()
       if @options.notify_on_init is true
-        @_invokeNotification()
+        @invokeNotification()
       @_eventify()
 
     option: (options = {}) ->
@@ -121,12 +121,12 @@ do ($ = jQuery) ->
       @_observations.length = 0
       @off()
 
-    _invokeNotification: ->
+    invokeNotification: ->
       @notify width: ns.viewport.width()
 
     _eventify: ->
       @_resizeHandler = ns.throttle =>
-        @_invokeNotification()
+        @invokeNotification()
         @trigger 'resize'
       , @options.throttle_millisec
       ns.winWatcher.on 'resize', @_resizeHandler

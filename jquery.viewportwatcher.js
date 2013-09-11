@@ -108,7 +108,7 @@
           this.option();
         }
         if (this.options.notify_on_init === true) {
-          this._invokeNotification();
+          this.invokeNotification();
         }
         this._eventify();
       }
@@ -158,7 +158,7 @@
         return this.off();
       };
 
-      Watcher.prototype._invokeNotification = function() {
+      Watcher.prototype.invokeNotification = function() {
         return this.notify({
           width: ns.viewport.width()
         });
@@ -167,7 +167,7 @@
       Watcher.prototype._eventify = function() {
         var _this = this;
         this._resizeHandler = ns.throttle(function() {
-          _this._invokeNotification();
+          _this.invokeNotification();
           return _this.trigger('resize');
         }, this.options.throttle_millisec);
         return ns.winWatcher.on('resize', this._resizeHandler);
