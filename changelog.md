@@ -1,3 +1,7 @@
+## v0.2.1
+
+* `invokeNotification` to public.
+
 ## v0.2.0
 
 * changed `when` API
